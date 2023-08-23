@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Event extends Model
 {
     use HasFactory;
+    protected $fillable =[ 'name','description', 'start_time', 'end_time','user_id' ];
+
+
     public function user() :BelongsTo
     {
         return $this->belongsTo(User::class);
