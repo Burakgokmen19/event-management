@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\EventResource;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,7 +15,7 @@ class EventController extends Controller
     public function index()
     {
 
-        return Event::all();
+        return EventResource::collection(Event::all());
 
     }
 
@@ -67,7 +68,7 @@ class EventController extends Controller
     {
          $event->delete();
          return response()->json([
-            'message'=>'sildim ama php storm'
+            'message'=>'sildim'
          ]);
 
     }
