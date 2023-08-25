@@ -15,15 +15,20 @@ class AuthController extends Controller
               'email'=>'required|email',
               'password'=>'required'
           ]);
-    }
-    public function logout(Request $request)
-    {
         $user = \App\Models\User::where('email',$request->email)->first();
-        if (!$user)
-        {
+        if (!$user) {
             throw  ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.']
             ]);
         }
+        $token = $user->createToken('api-token')->plainTextToken;
+        return response()->json([
+            'token'=>$token
+        ]);
+    }
+    public function logout(Request $request)
+    {
+
+
     }
 }
