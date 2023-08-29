@@ -49,8 +49,8 @@ class EventController extends Controller
                 ...$request->validate([
                     'name'=> 'required|string|max:255',
                     'description'=> 'nullable|string',
-                    'start_time'=> 'required|date',
-                    'end_time'=> 'required|date|after:start_time',
+                    //'start_time'=> 'required|date',
+                    //'end_time'=> 'required|date|after:start_time',
                 ]),
                     'user_id' => 1
               ]);
